@@ -1,6 +1,6 @@
 class Zombie < ApplicationRecord
-  has_one :brain
-  
+  has_one :brain, dependent: :destroy
+
   before_save :make_rotting
 
   def make_rotting
