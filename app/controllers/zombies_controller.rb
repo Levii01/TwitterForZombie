@@ -25,6 +25,8 @@ class ZombiesController < ApplicationController
   # POST /zombies.json
   def create
     @zombie = Zombie.new(zombie_params)
+    brain = params[:zombie][:flavor]
+    @zombie.create_brain(flavor: brain) if brain
 
     respond_to do |format|
       if @zombie.save
@@ -69,6 +71,6 @@ class ZombiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zombie_params
-      params.require(:zombie).permit(:name, :bio, :age, :email, :rotting)
+      params.require(:zombie).permit(:name, :bio, :age, :email, :rotting, :flavor)
     end
 end

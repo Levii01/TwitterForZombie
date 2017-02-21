@@ -3,6 +3,8 @@ class Zombie < ApplicationRecord
   has_many :assignments
   has_many :roles, through: :assignments
 
+  attr_accessor :flavor
+
   before_save :make_rotting
 
   def make_rotting
