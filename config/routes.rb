@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roles
   get 'rotting_zombies', to: 'rotting_zombies#index'
 
   resources :zombies
