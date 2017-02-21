@@ -8,19 +8,22 @@
       <th>Name</th>
       <th>Bio</th>
       <th>Age</th>
+      <th>Rotting</th>
       <th>Brain flavor</th>
-      <th colspan="3"></th>
+      <th>Em@il</th>
+      <th colspan="2">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @zombies.each do |zombie| %>
       <tr>
-        <td><%= zombie.name %></td>
+        <td><%= link_to zombie.name, zombie %></td>
         <td><%= zombie.bio %></td>
         <td><%= zombie.age %></td>
+        <td><%= zombie.rotting %></td>
         <td><%= zombie.brain.flavor unless zombie.brain.nil? %></td>
-        <td><%= link_to 'Show', zombie %></td>
+        <td><%= zombie.email %></td>
         <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
         <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
