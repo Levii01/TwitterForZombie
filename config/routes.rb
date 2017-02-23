@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :roles
   get 'rotting_zombies', to: 'rotting_zombies#index'
 
-  resources :zombies
+  resources :zombies do
+    resources :tweets
+  end
 
   root to: 'zombies#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

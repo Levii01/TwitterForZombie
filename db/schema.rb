@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220232657) do
+ActiveRecord::Schema.define(version: 20170221174545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20170220232657) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tweets", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "zombie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["zombie_id"], name: "index_tweets_on_zombie_id", using: :btree
+  end
+
   create_table "zombies", force: :cascade do |t|
     t.string   "name"
     t.text     "bio"
@@ -52,4 +60,5 @@ ActiveRecord::Schema.define(version: 20170220232657) do
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "zombies"
   add_foreign_key "brains", "zombies"
+  add_foreign_key "tweets", "zombies"
 end

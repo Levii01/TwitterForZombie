@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tweets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Zombie</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.status %></td>
+        <td><%= tweet.zombie.name %></td>
+        <td><%= link_to 'Show', [@zombie, tweet] %></td>
+        <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie, tweet) %></td>
+        <td><%= link_to 'Destroy', [@zombie, tweet], method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "#{@zombie.name}'s Tweet", new_zombie_tweet_path %>
+<%= link_to "Back", zombies_path %>

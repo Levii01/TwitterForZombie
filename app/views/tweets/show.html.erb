@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @tweet.status %>
+</p>
+
+<p>
+  <strong>Zombie:</strong>
+  <%= @tweet.zombie.name %>
+</p>
+
+<%= link_to 'Edit', edit_zombie_tweet_path(@zombie) %> |
+<%= link_to 'Back', zombie_tweets_path %>
