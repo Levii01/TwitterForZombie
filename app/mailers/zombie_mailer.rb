@@ -1,14 +1,16 @@
 class ZombieMailer < ApplicationMailer
-
+  default from: "from@example.com"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.zombie_mailer.decomp_change.subject
   #
-  def decomp_change
-    @greeting = "Hi"
+  def decomp_change(zombie)
+    @zombie = zombie
+    @last_tweet = @zombie.tweet.last
 
-    mail to: "to@example.org"
+    attachments['z.pdf'] = File.read("#{Rails.root}/public/zombie.pdf")
+    mail to: @zombie.email, subject: 'Your decomp stage has changed'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

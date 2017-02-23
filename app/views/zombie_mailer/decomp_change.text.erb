@@ -1,3 +1,5 @@
-Zombie#decomp_change
+<h1>Greetings <%= @zombie.name %>,</h1>
+<p>Your decomposition state is now <%= @zombie.decomp %> and your
+last tweet was: <%= @last_tweet.status %></p>
 
-<%= @greeting %>, find me in app/views/zombie_mailer/decomp_change.text.erb
+<%= link_to "View yourself", zombie_url(@zombie) %>
