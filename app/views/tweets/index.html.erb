@@ -15,10 +15,10 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= tweet.status %></td>
-        <td><%= tweet.zombie %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tweet.zombie.name %></td>
+        <td><%= link_to 'Show', [@zombie, tweet] %></td>
+        <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie, tweet) %></td>
+        <td><%= link_to 'Destroy', [@zombie, tweet], method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,5 @@
 
 <br>
 
-<%= link_to 'New Tweet', new_tweet_path %>
+<%= link_to "#{@zombie.name}'s Tweet", new_zombie_tweet_path %>
+<%= link_to "Back", zombies_path %>
