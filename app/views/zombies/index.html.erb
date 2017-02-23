@@ -12,6 +12,7 @@
       <th>Brain flavor</th>
       <th>Tweets</th>
       <th>Em@il</th>
+      <th>Decomp</th>
       <th colspan="2">Action</th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= zombie.brain.flavor unless zombie.brain.nil? %></td>
         <td><%= link_to "#{zombie.name}", zombie_tweets_path(zombie) %></td>
         <td><%= zombie.email %></td>
+        <td><%= zombie.decomp %></td>
         <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
         <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
