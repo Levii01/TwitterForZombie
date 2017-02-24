@@ -1,5 +1,5 @@
 class ZombiesController < ApplicationController
-  before_action :set_zombie, only: [:show, :edit, :update, :destroy]
+  before_action :set_zombie, only: [:decomp, :show, :edit, :update, :destroy]
 
   # GET /zombies
   # GET /zombies.json
@@ -10,6 +10,19 @@ class ZombiesController < ApplicationController
   # GET /zombies/1
   # GET /zombies/1.json
   def show
+  end
+
+  def decomp
+    if @zombie.decomp == 'Dead (again)'
+      render json: @zombie.to_json(except: [:updated_at, :id]),
+                    status: :unprocessable_entity
+    else
+      render json: @zombie.to_json(only: :decomp), status: :ok
+    end
+  end
+
+  def as_json(options = nil)
+    super(options || {include: :brain, except: [:created_at, :updated_at, :id]})
   end
 
   # GET /zombies/new

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :zombies do
     resources :tweets
+    get :decomp, on: :member
   end
 
   root to: 'zombies#index'
