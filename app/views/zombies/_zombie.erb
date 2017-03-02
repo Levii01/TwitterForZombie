@@ -1,14 +1,12 @@
-<%= div_for zombie do %>
-  <tr>
-    <td><%= link_to zombie.name, zombie %></td>
-    <td><%= zombie.bio %></td>
-    <td><%= zombie.age %></td>
-    <td><%= zombie.rotting %></td>
-    <td><%= zombie.brain.flavor unless zombie.brain.nil? %></td>
-    <td><%= link_to "#{zombie.name}", zombie_tweets_path(zombie) %></td>
-    <td><%= zombie.email %></td>
-    <td><%= zombie.decomp %></td>
-    <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
-    <td><%= link_to 'Destroy', zombie, method: :delete, remote: true %></td>
-  </tr>
-<% end %>
+<tr id=<%= dom_id(zombie) %>>
+  <td><%= link_to zombie.name, zombie %></td>
+  <td><%= zombie.bio %></td>
+  <td><%= zombie.age %></td>
+  <td><%= zombie.rotting %></td>
+  <td><%= zombie.brain.flavor unless zombie.brain.nil? %></td>
+  <td><%= link_to "#{zombie.name}", zombie_tweets_path(zombie) %></td>
+  <td><%= zombie.email %></td>
+  <td><%= zombie.decomp %></td>
+  <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
+  <td><%= link_to 'Destroy', zombie, method: :delete, remote: true %></td>
+</tr>
